@@ -1,0 +1,10 @@
+1-progr - print `Hello World!`.
+2-progr - print Christmas tree.
+3-progr - echos until Alt 255 reached.
+4-progr - 410-byte quine.
+5-progr - 10 Fibonacci numbers.
+6-progr - square numbers from 0 to 10000.
+7-progr - a brainfuck-to-C translator.
+8-progr - sorts the bytes of its input by bubble sort.
+9-progr - display Sierpinski triangle.
+10-progr - counts lines, words, bytes.
