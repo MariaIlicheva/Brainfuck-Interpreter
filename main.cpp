@@ -119,6 +119,10 @@ std::string read_file(const std::string& filename) {
 		content += line;
 	}
 
+	if (content.empty() == true) {
+		std::cout << "ERROR";
+		return "";
+	}
     return content;
 }
 
