@@ -110,7 +110,7 @@ std::string read_file(const std::string& filename) {
     std::ifstream file(filename);
     if (!file) {
         std::cout << "ERROR";
-        return 0;
+        return "";
     }
 
     file.seekg(0, std::ios::end);
@@ -122,7 +122,7 @@ std::string read_file(const std::string& filename) {
 	
     if (!file.read(&in[0], sz)) {
         std::cout << "ERROR";
-        return 0;
+        return "";
     }
 
     return in;
