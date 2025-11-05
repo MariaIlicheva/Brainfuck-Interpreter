@@ -26,7 +26,7 @@ jobs:
         uses: amcp-pit/autograding@v1
       - name: Memory leaks
         run: |
-             valgrind --tool=memcheck --leak-check=full --undef-value-errors=no --error-exitcode=111 ./b tests/8-progr.txt tests/8-input.txt output.txt
+             valgrind --tool=memcheck --leak-check=full --undef-value-errors=no --error-exitcode=111 ./b tests/8-progr.txt tests/8-input.txt
       - name: Code linting
         uses: amcp-pit/cpp-linter@v1
         with:
