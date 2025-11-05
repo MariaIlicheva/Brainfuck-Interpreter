@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 
-
 std::string brainFuck(const std::string &code, const std::string &input) {
     unsigned char tape[30000] = {0};
     unsigned char *m = tape;   
@@ -43,7 +42,7 @@ std::string brainFuck(const std::string &code, const std::string &input) {
 
             case ',':
                 if (i >= input.size()) {
-                    return "ERROR";
+                    *m = 0;
                 }
                 *m = static_cast<unsigned char>(input[i++]);
                 break;
@@ -98,7 +97,6 @@ std::string brainFuck(const std::string &code, const std::string &input) {
                 }
                 break;
 
-            default: break;
         }
 
         ++ci;
@@ -107,10 +105,11 @@ std::string brainFuck(const std::string &code, const std::string &input) {
     return result;
 }
 
+
 std::string read_file(const std::string& filename) {
     std::ifstream file(filename);
     if (!file) {
-        std::cout << "! ERROR\n";
+        std::cout << "ERROR";
         return 0;
     }
 
@@ -118,10 +117,12 @@ std::string read_file(const std::string& filename) {
     std::streamsize sz = file.tellg();
     file.seekg(0, std::ios::beg);
 
-    std::string in(sz, '\0');
+    std::string in;
+    in.resize(sz);
+	
     if (!file.read(&in[0], sz)) {
-        std::cout << "ERROR\n";
-        std::exit(1);
+        std::cout << "ERROR";
+        return 0;
     }
 
     return in;
