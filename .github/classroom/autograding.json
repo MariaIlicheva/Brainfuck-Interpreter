@@ -6,7 +6,7 @@
       "run": "timeout 10 ./b tests/1-progr.txt tests/1-input.txt > output.txt && cmp output.txt tests/1-output.txt",
       "input": "",
       "output": "",
-      "comparison": "include",
+      "comparison": "include", 
       "timeout": 1,
       "points": 1
     },
