@@ -113,19 +113,13 @@ std::string read_file(const std::string& filename) {
         return "";
     }
 
-    file.seekg(0, std::ios::end);
-    std::streamsize sz = file.tellg();
-    file.seekg(0, std::ios::beg);
+	std::string content;
+	std::string line;
+	while (std::getline(file, line)) {
+		content += line;
+	}
 
-    std::string in;
-    in.resize(sz);
-	
-    if (!file.read(&in[0], sz)) {
-        std::cout << "ERROR";
-        return "";
-    }
-
-    return in;
+    return content;
 }
 
 int main(int argc, char* argv[]) {
