@@ -1,6 +1,7 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include <vector>
 
 std::string brainFuck(const std::string &code, const std::string &input) {
     unsigned char tape[30000] = {0};
@@ -106,25 +107,29 @@ std::string brainFuck(const std::string &code, const std::string &input) {
 
 
 std::string read_file(const std::string& filename) {
-    std::ifstream file(filename);
-    if (!file) {
-        std::cout << "ERROR";
+    std::ifstream in(filename, std::ios::binary);
+    if (!in) {
         return "";
     }
+    in.seekg(0, std::ios::end);
+    const auto size = in.tellg();
+    in.seekg(0, std::ios::beg);
 
-	std::string content;
-	std::string line;
-	while (std::getline(file, line)) {
-		content += line + "\n";
-	}
-    return content;
+    std::vector<char> data(size);
+    in.read(data.data(), size);
+    return std::string(data.data(), size);
 }
 
+
 int main(int argc, char* argv[]) {
+    if (argc != 3) {
+        std::cout << "ERROR";
+        return 0;
+    }
+
     std::string code = read_file(argv[1]);
     std::string input = read_file(argv[2]);
 
-	std::cout << brainFuck(code, input);
-	
-	return 0;
+    std::cout << brainFuck(code, input);
+    return 0;
 }
