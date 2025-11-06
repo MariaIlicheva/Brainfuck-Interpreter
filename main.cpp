@@ -101,7 +101,6 @@ std::string brainFuck(const std::string &code, const std::string &input) {
 
         ++ci;
     }
-
     return result;
 }
 
@@ -116,12 +115,7 @@ std::string read_file(const std::string& filename) {
 	std::string content;
 	std::string line;
 	while (std::getline(file, line)) {
-		content += line;
-	}
-
-	if (content.empty() == true) {
-		std::cout << "ERROR";
-		return "";
+		content += line + "\n";
 	}
     return content;
 }
